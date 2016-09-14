@@ -3,6 +3,7 @@ package com.library.pay.wechat;
 import android.app.Activity;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.library.pay.BasePayUtils;
@@ -69,6 +70,11 @@ public class WxPayUtils extends BasePayUtils {
     }
 
     private void sendPayReq(PayParams params) {
+        if (params == null) {
+            Log.d(TAG, "支付信息有误!");
+            Toast.makeText(mActivity, "支付失败!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (PayConstants.PAY_DEBUG_MODE) {
             mAppId = params.getAppid();
             mPartnerId = params.getPartnerid();

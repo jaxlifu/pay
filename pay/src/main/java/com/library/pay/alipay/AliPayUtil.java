@@ -125,6 +125,11 @@ public class AliPayUtil extends BasePayUtils {
                 body = "该测试商品的详细描述";
                 price = "0.01";
             } else {
+                if (params == null) {
+                    Log.d(TAG, "支付信息有误!");
+                    Toast.makeText(mActivity, "支付失败!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 outTradeNo = params.getOutTradeNo();
                 subject = params.getSubject();
                 body = params.getBody();
