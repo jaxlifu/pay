@@ -33,4 +33,8 @@
         mPayUtils = PayUtilsFactory.getPayUtils(this, PayUtilsFactory.PAY_TYPE_ALIPAY);
         if (mPayUtils.checkSupportPay()) mPayUtils.pay("");
     }
- ```
+ ```  
+
+*  特别提示: 
+  1. 运行Demo时如果要看效果,请将`GlobalApplication`中的`onCreate中的 initPayInfo();注释掉`
+  2. 如果微信出现了第一次点击能够调起微信界面,后面不能请确认你的appid对应的信息,修改微信后台的包名以及签名信息 
