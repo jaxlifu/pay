@@ -34,7 +34,7 @@ task makeJar(type: Copy) {
     from('build/intermediates/bundles/release/')
     into('build/libs/')
     include('classes.jar')
-    rename('classes.jar', 'library.jar')
+    rename('classes.jar', 'library-pay.jar')
 }
 
 makeJar.dependsOn(build)
