@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+}
+
+/*
+*打包jar命令  ./gradlew makeJar
+*这段脚本的含义非常简单，我们自定义了一个名叫makeJar的task，它是Gradle API自带的copy类型的任务，这个任务依赖于 build任务，前面我们提到过，gradle有很多默认的任务，build便是其中的一个。
+* 所以当build任务结束后，会在build/intermediates/bundles/release/下生成classes.jar文件，我们只要在这之后，把它拷贝出来，重命名为library.jar就可以了。
+* */
+task makeJar(type: Copy) {
+    delete 'build/libs/library.jar'
+    from('build/intermediates/bundles/release/')
+    into('build/libs/')
+    include('classes.jar')
+    rename('classes.jar', 'library.jar')
+}
+
+makeJar.dependsOn(build)
+
+apply from: "bintray.gradle"
+/*
+ * 打包上传bintray命令
+ *./gradlew install
+ * ./gradlew bintrayUpload
+ */
