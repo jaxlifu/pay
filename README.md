@@ -37,4 +37,12 @@
 
 *  特别提示: 
   1. 运行Demo时如果要看效果,请将`GlobalApplication`中的`onCreate中的 initPayInfo();注释掉`
-  2. 如果微信出现了第一次点击能够调起微信界面,后面不能请确认你的appid对应的信息,修改微信后台的包名以及签名信息 
+  2. 如果微信出现了第一次点击能够调起微信界面,后面不能请确认你的appid对应的信息,修改微信后台的包名以及签名信息
+
+* 使用方式 
+ 1. android studio 
+ ```
+		Choose dependency snippet: Maven | Gradle | Ivy
+		compile 'com.yimeng:pay:1.0.0'
+ ```
+ 2. eclipse 传送门 [eclipse jar 文件下载](https://github.com/RainliFu/pay/blob/master/libs/v1.0.0/library-pay.jar)
